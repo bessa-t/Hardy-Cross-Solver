@@ -1,37 +1,25 @@
+import data
 import pandas as pd
-#Head Loss formula and tolerance
-
-flow_tolerance = 0.1 #Given in [L/s]
-head_loss_tolerance = 0.05 #Given in [m]
-head_loss_formula = "HW" #Type "HW" for Hazen-Williams and "DW" for Darcy Weisbach!
-
-#Data:
-pipe_data = {
-    "pipe_ID" : [1,2,3],
-    "nodes_connected" : ["1-2","2-3","3-1"],
-    "length_m": [100,70,74],
-    "Diameter_mm" : [100,50,75],
-    "C_HW" : [100,100,100],
-    "initial_flow_LPS" : [4,-1,-3]
-}
-loops = {
-    "Loop 1" :[1,2,3] #List of Pipe IDs in the loop.
-}
-nodal_flows = {
-    1: 7.0,
-    2: -5.0,
-    3: -2.0
-}
-#Transforming Data into a sheet with pd:
-pipes = pd.DataFrame(pipe_data)
-pipes = pipes.set_index("pipe_ID")
-
-#Test Block
-if __name__ == "__main__":
-    print("--- Nodal Flows (Boundary Conditions) ---")
-    print(nodal_flows)
-    print("\n--- Pipe Data (Iterative Network) ---")
-    print(pipes)
-    print("\n--- Loop Definitions ---")
-    print(loops)
-    
+import math
+def main():
+    class head_loss_calculator:
+        #Object responsable for calculating the head loss using different formulas
+        def __init__(self):
+            self.g = 9.81  # Acceleration of gravity (m/s^2)
+            self.vis = 1.002 * 10**-6 #Kinematic Viscosity (m^2/s)
+        def check_data(self,pipe_data,loops,nodal_flows):
+            pass
+            print("Iniciating Data Verification")
+            flow_sum = sum(nodal_flows.values())
+            if flow_sum > 0.0001:
+                raise ValueError("Sum of the nodal flows has to be equal 0")
+            #if pipe_data[]
+            print("Data ok")
+        
+            
+    #Test Block
+    if __name__ == "__main__":
+        my_calculator = head_loss_calculator()
+        test = my_calculator.check_data(data.pipe_data,data.loops,data.nodal_flows)
+        print(test)
+main()
