@@ -15,8 +15,12 @@ def main():
                 raise ValueError("Sum of the nodal flows has to be equal 0")
             #if pipe_data[]
             print("Data ok")
-        
-            
+        def calculate_loss(self,formula,length,diameter,flow,loss_coefficient):
+            if formula == "HW":
+                c = loss_coefficient
+                n = 1.85
+                m = 4.87
+                R = 10.64 * length * c^-1.85
     #Test Block
     if __name__ == "__main__":
         my_calculator = head_loss_calculator()
